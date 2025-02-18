@@ -1,0 +1,37 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+.caixa_contai{
+    width:100%;
+    height:100%;
+    display: flex;
+    justify-content:center;
+}
+.caixa_prin{
+    width: 400px;
+    height: 600px;
+    border: 2px solid red;
+    border-radius: 10px;
+    display: table;
+    justify-content:center;
+}
+.caixa_int1{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: right;
+    
+}
+.caixa_int2{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: row wrap;
+}
+.btn{
+    width: 10px;
+    display: flex;
+    justify-content: center;
+}
