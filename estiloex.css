@@ -1,0 +1,40 @@
+*{
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.container{
+    background-color: #2f3b30;
+   
+    height:800px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.caixa_prin{
+    width: 302px;
+    height: 302px;
+    border: 1px solid white;
+    display: flex;
+    flex-wrap: wrap;
+}
+.caixa_int{
+    
+    color: white;
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border: 1px solid white;
+}
+button{
+    color: white;
+    width: 99px;
+    height: 99px;
+    background-color:#2f3b30 ;
+    cursor: pointer;
+}
