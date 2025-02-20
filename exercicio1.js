@@ -28,22 +28,86 @@ function clicked(id,evt){
 }
 
 function conferir(){
-    console.log("entrou")
-    box.map((e)=>{
-        let next=e.parentNode.nextSibling.nextSibling.firstChild
-        let prev=next.parentNode.previousSibling.previousSibling.previousSibling.previousSibling.firstChild
-       
-        console.log(next,e,prev)
-        // let prev=e.previousElementSibling
-        if(prev != null && next != null){
-            console.log("entrou2")
-            if((e.innerHTML == "X" && prev.innerHTML == "X" && next.innerHTML =="X")){
-                console.log("voce ganhou")
-            }
+    for(let i=0; i<box.length;i++){
+        
+        if( box[i-1] === undefined ||  box[i+1] === undefined){
+           
+        }else if(box[i-1] != (box[0] || box[3] || box[6])){
+            let in_menos=box[i-1]
+            let in_mais=box[i-2]
+            let in_prin=box[i]
+            let in_xmais = box[i+4]
+            let in_xmenos = box[i-4]
+            let in_xmais2 = box[i+2]
+            let in_xmenos2 = box[i-2]
+            let in_Imais = box[i+3]
+            let in_Imenos = box[i-3]
+            if((in_menos.innerHTML == "X")&&(in_mais.innerHTML == "X")&&(in_prin.innerHTML == "X")){//variacao reta 
+                setTimeout(()=>{
+                    alert("voce ganhou")
+                },500)
+
+            }else if(( in_xmenos === undefined ||  in_xmais === undefined)||( in_xmenos2 === undefined ||  in_xmais2 === undefined)){
+                    console.log("indefinido")
+                }else if(((in_xmenos.innerHTML == "X")&&(in_xmais.innerHTML == "X")&&(in_prin.innerHTML == "X"))||((in_xmenos2.innerHTML == "X")&&(in_xmais2.innerHTML == "X")&&(in_prin.innerHTML == "X"))){
+                        setTimeout(()=>{
+                            alert("voce ganhou")
+                        },500)
+                
+                        }else if(( in_Imenos === undefined ||  in_Imais === undefined)){
+                            console.log("indefinido")
+                        }else if(((in_Imenos.innerHTML == "X")&&(in_Imais.innerHTML == "X")&&(in_prin.innerHTML == "X"))){
+                            setTimeout(()=>{
+                                alert("voce ganhou")
+                            },500)
+                        }
+
+            
         }
+            
         
         
-    })
+    }
+    for(let i=0; i<box.length;i++){
+        
+        if( box[i-1] === undefined ||  box[i+1] === undefined){
+           
+        }else if(box[i-1] != (box[0] || box[3] || box[6])){
+            let in_menos=box[i-1]
+            let in_mais=box[i-2]
+            let in_prin=box[i]
+            let in_xmais = box[i+4]
+            let in_xmenos = box[i-4]
+            let in_xmais2 = box[i+2]
+            let in_xmenos2 = box[i-2]
+            let in_Imais = box[i+3]
+            let in_Imenos = box[i-3]
+            if((in_menos.innerHTML == "O")&&(in_mais.innerHTML == "O")&&(in_prin.innerHTML == "O")){//variacao reta 
+                setTimeout(()=>{
+                    alert("voce perdeu")
+                },500)
+
+            }else if(( in_xmenos === undefined ||  in_xmais === undefined)||( in_xmenos2 === undefined ||  in_xmais2 === undefined)){
+                    console.log("indefinido")
+                }else if(((in_xmenos.innerHTML == "O")&&(in_xmais.innerHTML == "O")&&(in_prin.innerHTML == "O"))||((in_xmenos2.innerHTML == "O")&&(in_xmais2.innerHTML == "O")&&(in_prin.innerHTML == "O"))){
+                        setTimeout(()=>{
+                            alert("voce perdeu")
+                        },500)
+                
+                        }else if(( in_Imenos === undefined ||  in_Imais === undefined)){
+                            console.log("indefinido")
+                        }else if(((in_Imenos.innerHTML == "O")&&(in_Imais.innerHTML == "O")&&(in_prin.innerHTML == "O"))){
+                            setTimeout(()=>{
+                                alert("voce perdeu")
+                            },500)
+                        }
+
+            
+        }
+            
+        
+        
+    }
 }
 
 box.map((e)=>{
