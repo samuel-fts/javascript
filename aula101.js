@@ -1,5 +1,5 @@
 let nome= new String("bruno")//é uma classe de string. ele basicamente cria um objeto com propriedades usando cada caracter
-
+a
 console.log(nome)
 consoele.log(typeof(nome))
 
