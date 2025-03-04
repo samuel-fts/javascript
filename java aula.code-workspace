@@ -10,5 +10,7 @@
 			"path": "../lua"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "javascript"
+	}
 }
