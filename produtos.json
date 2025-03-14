@@ -1,0 +1,26 @@
+[
+    {
+        "id":"01",
+        "produto": "Processador",
+        "marca":"intel",
+        "modelo":"i7"
+    },
+    {
+        "id":"01",
+        "produto": "Impressora",
+        "marca":"HP",
+        "modelo":"P190"
+    },
+    {
+        "id":"02",
+        "produto": "Mouse",
+        "marca":"Razer",
+        "modelO":"M90"
+    },
+    {
+        "id":"01",
+        "produto": "Monitor",
+        "marca":"Sansung",
+        "modelo":"g3"
+    }
+]

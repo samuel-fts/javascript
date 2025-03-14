@@ -4,17 +4,23 @@ class Login{
     static nomelogado=null;
     static acessologado=null;
     static estilocss=null;
+    static mat=null;
+    static pas=null;
+    static callback_ok=null;
+    static callback_naook=null;
+
     static config={
         cor:"#048",
         img:"#"
     };
-    static endpoint="https://a56491b3-4917-4d41-8339-cdf7549d2957-00-q5k5tiu5jabu.spock.replit.dev/"
+    
 
-    static login=(mat,pas,config=null)=>{
+    static login=(callback_ok,callback_naook,config=null)=>{
         if(config!=null){
             this.config=config;
         }
-        this.endpoint+=`?matricula=${mat}&senha=${pas}`
+        this.callback_ok=()=>{callback_ok()    }
+        this.callback_naook=()=>{callback_naook()    }
         this.estilocss=
         ".fundoLogin{display: flex;justify-content: center;align-items: center;width:100%;height: 100vh;position: absolute;top:0px;left: 0px;background-color:rgba(0,0,0,0.75);box-sizing: border-box;}.baseLogin{display: flex;justify-content: center;align-items: stretch;width:50%;box-sizing: inherit;}.elementosLogin{display: flex;justify-content: center;align-items: flex-start;flex-direction: column;width:50%;background-color:#eee;padding: 10px;border-radius: 10px 0px 0px 10px;box-sizing: inherit;}.logoLogin{display: flex;justify-content: center;align-items: center;width:50%;background-color: #bbb;padding: 10px;border-radius: 0px 10px 10px 0px;box-sizing: inherit;}.logoLogin img{width: 90%;box-sizing: inherit;}.campoLogin label{font-size: 18px;}.campoLogin input{font-size: 18px;padding: 5px;background-color: #fff;border-radius: 5px;}.campoLogin{display: flex;justify-content: flex-start;align-items: flex-start;flex-direction: column;box-sizing: inherit;margin-bottom: 10px;}"+
         `.botoesLogin{display: flex;width:100%;justify-content: space-around;align-items: center;box-sizing: inherit;}.botoesLogin button{cursor: pointer;background-color: ${this.config.cor};color: #fff;border-radius:5px;padding:10px;width:100px;box-sizing: inherit;}`
@@ -52,7 +58,7 @@ class Login{
         campoLoginUsername.appendChild(labelUsername);
 
         const inputUsername=document.createElement("input");
-        inputUsername.setAttribute("id","inputUsername");
+        inputUsername.setAttribute("id","f_username");
         inputUsername.setAttribute("type","text");
         inputUsername.setAttribute("name","f_username");
         campoLoginUsername.appendChild(inputUsername);
@@ -69,7 +75,7 @@ class Login{
         campoLoginSenha.appendChild(labelSenha);
 
         const inputSenha=document.createElement("input");
-        inputSenha.setAttribute("id","f:_senha");
+        inputSenha.setAttribute("id","f_senha");
         inputSenha.setAttribute("type","password");
         inputSenha.setAttribute("name","f_senha");
         campoLoginSenha.appendChild(inputSenha);
@@ -81,12 +87,18 @@ class Login{
         const btn_login=document.createElement("button");
         btn_login.setAttribute("id","btn_login");
         btn_login.innerHTML="Login";
+        btn_login.addEventListener("click",(evt)=>{
+           this.verificaLogin();
+            
+        })
         botoesLogin.appendChild(btn_login);
 
         const btn_cancelar=document.createElement("button");
         btn_cancelar.setAttribute("id","btn_cancelar");
         btn_cancelar.innerHTML="Cancelar";
+        btn_cancelar.addEventListener("click",()=>{this.fechar();})
         botoesLogin.appendChild(btn_cancelar);
+
 
         const logoLogin=document.createElement("div");
         logoLogin.setAttribute("id","logoLogin");
@@ -99,20 +111,46 @@ class Login{
         imgLogoLogin.setAttribute("title","CFBCursos");
         logoLogin.appendChild(imgLogoLogin);
 
+
+
         
-        // fetch(this.endpoint)
-        // .then(res=>res.json())
-        // .then(res=>{
-        //     if(res){
-        //         this.logado=true;
-        //         this.matlogado=mat;
-        //         this.nomelogado=res.nome;
-        //         this.acessologado=res.acesso;
-        //         console.log(res);
-        //     }else{
-        //         console.log("nulo");
-        //     }
-        // })
+       
+        
+    }
+
+    static verificaLogin=()=>{
+        let mat=document.querySelector("#f_username").value;
+        let pas=document.querySelector("#f_senha").value;
+
+        const endpoint=`https://a56491b3-4917-4d41-8339-cdf7549d2957-00-q5k5tiu5jabu.spock.replit.dev/?matricula=${mat}&senha=${pas}` 
+
+        fetch(endpoint)
+        .then(res=>res.json())
+        .then(res=>{
+            console.log(res);
+            if(res){
+                this.logado=true;
+                this.matlogado=mat;
+                this.nomelogado=res.nome;
+                this.acessologado=res.acesso;
+                this.fechar();
+                this.callback_ok();
+            }else{
+                this.logado=false;
+                this.matlogado=null;
+                this.nomelogado=null;
+                this.acessologado=null;
+                this.callback_naook();
+            }
+        })
+
+    }
+
+    static fechar=()=>{
+        const fundoLogin=document.querySelector("#fundoLogin")
+        fundoLogin.remove();
+        const id_estiloLogin=document.querySelector("#id_estiloLogin");
+        id_estiloLogin.remove();
     }
 }
 export {Login};
