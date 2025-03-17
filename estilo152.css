@@ -40,6 +40,12 @@
     flex-direction: row;
 }
 
+.dgvLinha:nth-child(odd){
+    background-color: #ddd;
+}
+.dgvLinha:nth-child(even){
+    background-color: #eee;
+}
 .c1{
     width: 50px;
 }
